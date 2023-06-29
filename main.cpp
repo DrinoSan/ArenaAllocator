@@ -96,7 +96,10 @@ int main()
 
     for(int64_t i = 0; i < 1024UL * 1024UL * 1024UL; ++i)
     {
-         *(static_cast<std::string*>(arenaAllocate(arena, sizeof(std::string)))) = "DEADBEEF";
+        std::string* str = (static_cast<std::string*>(arenaAllocate(arena, sizeof(std::string))));
+         *str = "DEADBEEF";
+         //std::cout << "ADDREE OF STR: " << str << "\n";
+         /* arenaDeallocate(arena); */
     }
 
     // Objects are still in memory but will be overwritten
